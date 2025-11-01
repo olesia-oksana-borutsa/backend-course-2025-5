@@ -1,0 +1,14 @@
+
+ Тест GET 
+curl http://localhost:3000/404 -o cat404.jpg
+ Сервер має взяти картинку  з кешу
+curl http://localhost:3000/404 -o cat404_from_cache.jpg
+
+Тест PUT 
+curl -X PUT --data-binary @cat404.jpg http://localhost:3000/800
+
+Тест DELETE 
+curl -X DELETE http://localhost:3000/800
+
+ інші методи
+curl -X POST http://localhost:3000/200
