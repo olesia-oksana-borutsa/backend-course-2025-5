@@ -96,7 +96,30 @@ const server = http.createServer(async (req, res) => {
         });
         break;
 
-     
+      case 'DELETE':
+        try {
+          await fsp.unlink(filePath); 
+          res.writeHead(200); 
+          res.end('OK');
+        } catch (error) {
+          // не було в кеші
+          res.writeHead(404);
+          res.end('Not Found');
+        }
+        break;
+      
+    
+      default:
+        res.writeHead(405); 
+        res.end('Method Not Allowed');
+    }
+  } catch (e) {
+
+    console.error("General server error:", e);
+    res.writeHead(500);
+    res.end('Internal Server Error');
+  }
+});
 
      
      
